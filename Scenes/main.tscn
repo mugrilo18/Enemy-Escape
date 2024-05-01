@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3yoax8uww4ve"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7dh1f"]
+[ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
+[ext_resource type="PackedScene" uid="uid://bqfhr4f5nuqpx" path="res://Scenes/enemy.tscn" id="2_mjd0i"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_o25pb"]
+vertices = PackedVector3Array(-16.463, 1, -19.5518, -16.463, 1, 19.4482, 16.537, 1, 19.4482, 16.537, 1, -19.5518)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_size = 77.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxpxc"]
+albedo_color = Color(0, 0.45098, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hxk6"]
+material = SubResource("StandardMaterial3D_rxpxc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7syy"]
+
+[sub_resource type="Environment" id="Environment_rw1l0"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.5
+reflected_light_source = 1
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_7dh1f")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_o25pb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(33.9259, 0, 0, 0, 1, 0, 0, 0, 40.1036, 0, 0, 0)
+mesh = SubResource("BoxMesh_4hxk6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_y7syy")
+
+[node name="Player" parent="." instance=ExtResource("1_b0qvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932, 0, -0.62932, 0.777146, 0, 8.72, 12.135)
+environment = SubResource("Environment_rw1l0")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_mjd0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
+player = NodePath("../Player")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

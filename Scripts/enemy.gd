@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var player: CharacterBody3D
 
-var speed = 5.0
+var speed = 2.0
 
 func _physics_process(delta):
 	var current_location = global_transform.origin

@@ -2,12 +2,17 @@ extends Control
 
 @onready var timer = $Timer
 @onready var timerStatus = $text_holder/timer_status
+@export var enemy: CharacterBody3D
 
 @onready var seconds = 0
 @onready var minutes = 0
 
 func _ready():
 	timer.start()
+
+func _process(delta):
+	print("%0.2f" % enemy.speed)
+	
 
 func _on_timer_timeout():
 	seconds += 1
@@ -24,3 +29,7 @@ func _on_timer_timeout():
 	
 	timerStatus.text = str("%s:%s" % [minuteText, secondText])
 	timer.start()
+	
+	#inimigo
+	if seconds % 10 == 0:
+		enemy.speed = enemy.speed * 1.25

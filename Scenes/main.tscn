@@ -51,4 +51,5 @@ environment = SubResource("Environment_rw1l0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
 player = NodePath("../Player")
 
-[node name="UI" parent="." instance=ExtResource("4_e8b73")]
+[node name="UI" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
+enemy = NodePath("../Enemy")

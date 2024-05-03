@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://wqrhgci0la0i"]
 
-[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_e4wum"]
+[ext_resource type="Script" path="res://Scripts/timer.gd" id="1_e4wum"]
 
-[node name="UI" type="Control"]
+[node name="Timer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

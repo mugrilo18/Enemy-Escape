@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=11 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
 [ext_resource type="PackedScene" uid="uid://bqfhr4f5nuqpx" path="res://Scenes/enemy.tscn" id="2_mjd0i"]
-[ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/ui.tscn" id="4_e8b73"]
+[ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/timer.tscn" id="4_e8b73"]
+[ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o25pb"]
 vertices = PackedVector3Array(-16.463, 1, -19.5518, -16.463, 1, 19.4482, 16.537, 1, 19.4482, 16.537, 1, -19.5518)
@@ -51,5 +52,8 @@ environment = SubResource("Environment_rw1l0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
 player = NodePath("../Player")
 
-[node name="UI" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
+[node name="Timer" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
 enemy = NodePath("../Enemy")
+
+[node name="MiniMap" parent="." instance=ExtResource("5_7v10w")]
+target = NodePath("../Player")

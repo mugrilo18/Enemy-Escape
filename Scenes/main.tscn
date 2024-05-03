@@ -1,10 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=14 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
 [ext_resource type="PackedScene" uid="uid://bqfhr4f5nuqpx" path="res://Scenes/enemy.tscn" id="2_mjd0i"]
 [ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/timer.tscn" id="4_e8b73"]
 [ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4so7a"]
+sky_top_color = Color(0.211765, 0.470588, 0.678431, 1)
+sky_horizon_color = Color(0.595098, 0.651961, 0.69902, 1)
+ground_bottom_color = Color(0.168627, 0.137255, 0.117647, 1)
+ground_horizon_color = Color(0.595098, 0.651961, 0.69902, 1)
+
+[sub_resource type="Sky" id="Sky_2gt62"]
+sky_material = SubResource("ProceduralSkyMaterial_4so7a")
+
+[sub_resource type="Environment" id="Environment_sdd6y"]
+background_mode = 2
+sky = SubResource("Sky_2gt62")
+tonemap_mode = 2
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o25pb"]
 vertices = PackedVector3Array(-16.463, 1, -19.5518, -16.463, 1, 19.4482, 16.537, 1, 19.4482, 16.537, 1, -19.5518)
@@ -28,6 +42,15 @@ reflected_light_source = 1
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7dh1f")
+
+[node name="Light" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Light"]
+transform = Transform3D(-0.988756, -0.129501, 0.0747676, 0, 0.5, 0.866025, -0.149535, 0.856288, -0.494378, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Light"]
+environment = SubResource("Environment_sdd6y")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_o25pb")

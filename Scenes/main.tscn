@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=15 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
 [ext_resource type="PackedScene" uid="uid://bqfhr4f5nuqpx" path="res://Scenes/enemy.tscn" id="2_mjd0i"]
+[ext_resource type="PackedScene" uid="uid://1yhxgw02x0du" path="res://Scenes/pause_menu.tscn" id="4_1w0gm"]
 [ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/timer.tscn" id="4_e8b73"]
 [ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
 
@@ -52,6 +53,17 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Light"]
 environment = SubResource("Environment_sdd6y")
 
+[node name="UI" type="Node" parent="."]
+
+[node name="Timer" parent="UI" node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
+enemy = NodePath("../../Enemy")
+
+[node name="MiniMap" parent="UI" instance=ExtResource("5_7v10w")]
+target = NodePath("../../Player")
+
+[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("4_1w0gm")]
+player = NodePath("../../Player")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_o25pb")
 
@@ -74,9 +86,3 @@ environment = SubResource("Environment_rw1l0")
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_mjd0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
 player = NodePath("../Player")
-
-[node name="Timer" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
-enemy = NodePath("../Enemy")
-
-[node name="MiniMap" parent="." instance=ExtResource("5_7v10w")]
-target = NodePath("../Player")

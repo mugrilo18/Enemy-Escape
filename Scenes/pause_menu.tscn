@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://1yhxgw02x0du"]
+[gd_scene load_steps=6 format=3 uid="uid://1yhxgw02x0du"]
 
 [ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_h8xq5"]
-[ext_resource type="Script" path="res://pause_menu.gd" id="1_wmiuv"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_wmiuv"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_02kte"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_5goiv"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_vsj8o"]
+events = [SubResource("InputEventKey_02kte"), SubResource("InputEventJoypadButton_5goiv")]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -34,6 +45,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_h8xq5")
+shortcut = SubResource("Shortcut_vsj8o")
 text = "Continuar"
 
 [node name="quit" type="Button" parent="button_holder"]

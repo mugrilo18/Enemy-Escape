@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=15 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://1yhxgw02x0du" path="res://Scenes/pause_menu.tscn" id="4_1w0gm"]
 [ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/timer.tscn" id="4_e8b73"]
 [ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
-[ext_resource type="PackedScene" uid="uid://bqtgcrholip3b" path="res://Scenes/item_holder.tscn" id="5_8v8kg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4so7a"]
 sky_top_color = Color(0.211765, 0.470588, 0.678431, 1)
@@ -64,8 +63,6 @@ target = NodePath("../../Player")
 
 [node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("4_1w0gm")]
 player = NodePath("../../Player")
-
-[node name="ItemHolder" parent="UI" instance=ExtResource("5_8v8kg")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_o25pb")

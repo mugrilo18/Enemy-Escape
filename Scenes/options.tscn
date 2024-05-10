@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://nmx8tws6mnpr"]
+
+[ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_vbbup"]
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_y4tdp"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4tdp")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="container_holder" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tittle_ui" type="Label" parent="background/container_holder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Configurações"
+
+[node name="button_holder" type="VBoxContainer" parent="background/container_holder"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="back" type="Button" parent="background/container_holder/button_holder"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_vbbup")
+text = "Menu"
+
+[connection signal="pressed" from="background/container_holder/button_holder/back" to="." method="_on_back_pressed"]

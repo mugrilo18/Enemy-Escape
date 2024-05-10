@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://tx8sxpwbdo6v"]
+
+[ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_gc4is"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u4f5a"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4f5a")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="container_holder" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -437.0
+offset_right = 437.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="background/container_holder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Enemy Escape"
+horizontal_alignment = 1
+
+[node name="button_holder" type="VBoxContainer" parent="background/container_holder"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="play" type="Button" parent="background/container_holder/button_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_gc4is")
+text = "Jogar"
+
+[node name="store" type="Button" parent="background/container_holder/button_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_gc4is")
+text = "Loja"
+
+[node name="options" type="Button" parent="background/container_holder/button_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_gc4is")
+text = "Configurações"
+
+[node name="exit" type="Button" parent="background/container_holder/button_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_gc4is")
+text = "Sair do jogo"
+
+[connection signal="pressed" from="background/container_holder/button_holder/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="background/container_holder/button_holder/store" to="." method="_on_store_pressed"]
+[connection signal="pressed" from="background/container_holder/button_holder/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="background/container_holder/button_holder/exit" to="." method="_on_exit_pressed"]

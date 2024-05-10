@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=16 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
@@ -41,6 +41,8 @@ ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.5
 reflected_light_source = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_10koc"]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_7dh1f")
 
@@ -76,7 +78,7 @@ mesh = SubResource("BoxMesh_4hxk6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_y7syy")
 
-[node name="Player" parent="." instance=ExtResource("1_b0qvk")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_b0qvk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -86,3 +88,12 @@ environment = SubResource("Environment_rw1l0")
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_mjd0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
 player = NodePath("../Player")
+
+[node name="limit_fall" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81142, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="limit_fall"]
+transform = Transform3D(953.906, 0, 0, 0, 1, 0, 0, 0, 772.057, 0, -2.07795, 0)
+shape = SubResource("BoxShape3D_10koc")
+
+[connection signal="body_entered" from="limit_fall" to="." method="_on_limit_fall_body_entered"]

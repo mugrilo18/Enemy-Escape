@@ -48,6 +48,20 @@ theme = ExtResource("1_h8xq5")
 shortcut = SubResource("Shortcut_vsj8o")
 text = "Continuar"
 
+[node name="restart" type="Button" parent="button_holder"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_h8xq5")
+shortcut = SubResource("Shortcut_vsj8o")
+text = "Reiniciar"
+
+[node name="main_menu" type="Button" parent="button_holder"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_h8xq5")
+text = "Menu"
+
 [node name="quit" type="Button" parent="button_holder"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -56,4 +70,6 @@ theme = ExtResource("1_h8xq5")
 text = "Sair do jogo"
 
 [connection signal="pressed" from="button_holder/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="button_holder/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="button_holder/main_menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="button_holder/quit" to="." method="_on_quit_pressed"]

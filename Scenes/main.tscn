@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=15 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://1yhxgw02x0du" path="res://Scenes/pause_menu.tscn" id="4_1w0gm"]
 [ext_resource type="PackedScene" uid="uid://wqrhgci0la0i" path="res://Scenes/timer.tscn" id="4_e8b73"]
 [ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
+[ext_resource type="PackedScene" uid="uid://c52m0lw2uxj23" path="res://Scenes/player_experience.tscn" id="5_ww3n7"]
+[ext_resource type="PackedScene" uid="uid://i0o7k14mufdr" path="res://Scenes/ground.tscn" id="6_gglm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4so7a"]
 sky_top_color = Color(0.211765, 0.470588, 0.678431, 1)
@@ -21,18 +23,9 @@ background_mode = 2
 sky = SubResource("Sky_2gt62")
 tonemap_mode = 2
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_o25pb"]
-vertices = PackedVector3Array(-16.463, 1, -19.5518, -16.463, 1, 19.4482, 16.537, 1, 19.4482, 16.537, 1, -19.5518)
+[sub_resource type="NavigationMesh" id="NavigationMesh_xk110"]
+vertices = PackedVector3Array(-19.5, 0.75, -19.5, -19.5, 0.75, 19.5, 19.5, 0.75, 19.5, 19.5, 0.75, -19.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-cell_size = 77.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxpxc"]
-albedo_color = Color(0, 0.45098, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4hxk6"]
-material = SubResource("StandardMaterial3D_rxpxc")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y7syy"]
 
 [sub_resource type="Environment" id="Environment_rw1l0"]
 ambient_light_source = 2
@@ -57,8 +50,7 @@ environment = SubResource("Environment_sdd6y")
 
 [node name="UI" type="Node" parent="."]
 
-[node name="Timer" parent="UI" node_paths=PackedStringArray("enemy") instance=ExtResource("4_e8b73")]
-enemy = NodePath("../../Enemy")
+[node name="Timer" parent="UI" instance=ExtResource("4_e8b73")]
 
 [node name="MiniMap" parent="UI" instance=ExtResource("5_7v10w")]
 target = NodePath("../../Player")
@@ -66,17 +58,12 @@ target = NodePath("../../Player")
 [node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("4_1w0gm")]
 player = NodePath("../../Player")
 
+[node name="PlayerExperience" parent="UI" instance=ExtResource("5_ww3n7")]
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_o25pb")
+navigation_mesh = SubResource("NavigationMesh_xk110")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
-transform = Transform3D(33.9259, 0, 0, 0, 1, 0, 0, 0, 40.1036, 0, 0, 0)
-mesh = SubResource("BoxMesh_4hxk6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_y7syy")
+[node name="Ground" parent="NavigationRegion3D" instance=ExtResource("6_gglm0")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_b0qvk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 0)
@@ -90,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50258, 6.22263)
 player = NodePath("../Player")
 
 [node name="limit_fall" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81142, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29608, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="limit_fall"]
 transform = Transform3D(953.906, 0, 0, 0, 1, 0, 0, 0, 772.057, 0, -2.07795, 0)

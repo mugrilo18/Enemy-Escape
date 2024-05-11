@@ -1,6 +1,8 @@
 extends Node3D
 
+#Player
 @onready var player = $Player
+
 
 func _process(delta):
 	if is_instance_valid(player):
@@ -13,3 +15,4 @@ func _process(delta):
 func _on_limit_fall_body_entered(body):
 	if body.is_in_group("player"):
 		player.queue_free()
+

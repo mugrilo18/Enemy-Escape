@@ -3,21 +3,17 @@ extends Control
 @onready var timer = $Timer
 @onready var timerStatus = $text_holder/timer_status
 
-@onready var seconds = 0
-@onready var minutes = 0
-
-#Inimigo
-@export var enemy: CharacterBody3D
 
 func _ready():
 	timer.start()
 
 func _on_timer_timeout():
-	seconds += 1
-	minutes = seconds / 60
 	
-	var secondText = seconds % 60
-	var minuteText = minutes
+	StatusGlobal.seconds += 1
+	StatusGlobal.minutes = StatusGlobal.seconds / 60
+	
+	var secondText = StatusGlobal.seconds % 60
+	var minuteText = StatusGlobal.minutes
 	
 	if secondText < 10:
 		secondText = "0" + str(secondText)
@@ -28,7 +24,12 @@ func _on_timer_timeout():
 	timerStatus.text = str("%s:%s" % [minuteText, secondText])
 	timer.start()
 	
-	#Inimigo
-	if seconds % 20 == 0:
-		enemy.speed = enemy.speed + .25
-		print(enemy.speed)
+	#Enemy
+	if StatusGlobal.seconds % 20 == 0:
+		StatusGlobal.enemy_speed = StatusGlobal.enemy_speed + .25
+		
+	
+	#PLayer
+	if StatusGlobal.seconds % 10 == 0:
+		StatusGlobal.player_xp = StatusGlobal.player_xp + 1
+		

@@ -3,12 +3,10 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 @export var player: CharacterBody3D
 
-var speed = 2.0
-
 func _physics_process(delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
-	var new_velocity = (next_location - current_location).normalized() * speed
+	var new_velocity = (next_location - current_location).normalized() * StatusGlobal.enemy_speed
 	
 	if is_instance_valid(player):
 		nav_agent.target_position = player.global_position

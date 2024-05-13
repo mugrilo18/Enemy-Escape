@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8dve571komdt"]
+
+[ext_resource type="Script" path="res://Scripts/coin_counter.gd" id="1_7l5xs"]
+[ext_resource type="Texture2D" uid="uid://d1kvcn2cefbin" path="res://Assets/Icons/Coin_icon2.png" id="2_w7g0x"]
+[ext_resource type="PackedScene" uid="uid://dcpcbw1nb8yyo" path="res://Scenes/coin.tscn" id="3_wuiyk"]
+
+[node name="CoinCounter" type="Control" node_paths=PackedStringArray("coin")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7l5xs")
+coin = NodePath("Coin")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 80.0
+color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[node name="coin_icon" type="TextureRect" parent="background"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 70.0
+offset_bottom = 75.0
+texture = ExtResource("2_w7g0x")
+
+[node name="counter" type="Label" parent="background/coin_icon"]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 134.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 48
+
+[node name="Coin" parent="." instance=ExtResource("3_wuiyk")]

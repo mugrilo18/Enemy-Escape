@@ -3,7 +3,6 @@ extends Node3D
 #Player
 @onready var player = $Player
 
-
 func _process(delta):
 	if is_instance_valid(player):
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

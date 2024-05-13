@@ -8,7 +8,6 @@ func _ready():
 	timer.start()
 
 func _on_timer_timeout():
-	
 	StatusGlobal.seconds += 1
 	StatusGlobal.minutes = StatusGlobal.seconds / 60
 	
@@ -29,7 +28,6 @@ func _on_timer_timeout():
 		StatusGlobal.enemy_speed = StatusGlobal.enemy_speed + .25
 		
 	
-	#PLayer
-	if StatusGlobal.seconds % 10 == 0:
+	#Player
+	if StatusGlobal.seconds % StatusGlobal.time_xp_player == 0:
 		StatusGlobal.player_xp = StatusGlobal.player_xp + 1
-		

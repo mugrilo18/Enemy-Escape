@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tx8sxpwbdo6v"]
+[gd_scene load_steps=4 format=3 uid="uid://tx8sxpwbdo6v"]
 
 [ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_gc4is"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u4f5a"]
+[ext_resource type="LabelSettings" uid="uid://ctd2txar1au8i" path="res://Themes/tittle_ui.tres" id="2_no01u"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -36,6 +37,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Enemy Escape"
+label_settings = ExtResource("2_no01u")
 horizontal_alignment = 1
 
 [node name="button_holder" type="VBoxContainer" parent="background/container_holder"]

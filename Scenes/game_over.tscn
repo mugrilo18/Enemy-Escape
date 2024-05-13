@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch2ngpvhc3xb3"]
+[gd_scene load_steps=4 format=3 uid="uid://ch2ngpvhc3xb3"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_3ft52"]
 [ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_cue6x"]
+[ext_resource type="LabelSettings" uid="uid://ctd2txar1au8i" path="res://Themes/tittle_ui.tres" id="2_5yiqw"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -37,6 +38,7 @@ layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 128
 text = "GAME OVER"
+label_settings = ExtResource("2_5yiqw")
 horizontal_alignment = 1
 
 [node name="button_holder" type="VBoxContainer" parent="background/container_holder"]
@@ -44,7 +46,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
-[node name="resume" type="Button" parent="background/container_holder/button_holder"]
+[node name="restart" type="Button" parent="background/container_holder/button_holder"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_cue6x")
@@ -62,6 +64,6 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_cue6x")
 text = "   Sair do jogo  "
 
-[connection signal="pressed" from="background/container_holder/button_holder/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="background/container_holder/button_holder/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="background/container_holder/button_holder/main_menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="background/container_holder/button_holder/quit" to="." method="_on_quit_pressed"]

@@ -3,16 +3,16 @@
 [ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_h8xq5"]
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_wmiuv"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_02kte"]
+[sub_resource type="InputEventKey" id="InputEventKey_hx1j2"]
 device = -1
 keycode = 4194305
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_5goiv"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_fgwkg"]
 button_index = 6
 pressed = true
 
-[sub_resource type="Shortcut" id="Shortcut_vsj8o"]
-events = [SubResource("InputEventKey_02kte"), SubResource("InputEventJoypadButton_5goiv")]
+[sub_resource type="Shortcut" id="Shortcut_egbo4"]
+events = [SubResource("InputEventKey_hx1j2"), SubResource("InputEventJoypadButton_fgwkg")]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -45,7 +45,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_h8xq5")
-shortcut = SubResource("Shortcut_vsj8o")
+shortcut = SubResource("Shortcut_egbo4")
 text = "Continuar"
 
 [node name="restart" type="Button" parent="button_holder"]
@@ -53,7 +53,6 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_h8xq5")
-shortcut = SubResource("Shortcut_vsj8o")
 text = "Reiniciar"
 
 [node name="main_menu" type="Button" parent="button_holder"]

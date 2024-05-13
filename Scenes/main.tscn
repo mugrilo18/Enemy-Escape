@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3yoax8uww4ve"]
+[gd_scene load_steps=16 format=3 uid="uid://b3yoax8uww4ve"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7dh1f"]
 [ext_resource type="PackedScene" uid="uid://flmdbkvo4lrg" path="res://Scenes/player.tscn" id="1_b0qvk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cal8rnbl0gk4e" path="res://Scenes/mini_map.tscn" id="5_7v10w"]
 [ext_resource type="PackedScene" uid="uid://c52m0lw2uxj23" path="res://Scenes/player_experience.tscn" id="5_ww3n7"]
 [ext_resource type="PackedScene" uid="uid://i0o7k14mufdr" path="res://Scenes/ground.tscn" id="6_gglm0"]
+[ext_resource type="PackedScene" uid="uid://b8dve571komdt" path="res://Scenes/coin_counter.tscn" id="6_xtl6j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4so7a"]
 sky_top_color = Color(0.211765, 0.470588, 0.678431, 1)
@@ -55,10 +56,13 @@ environment = SubResource("Environment_sdd6y")
 [node name="MiniMap" parent="UI" instance=ExtResource("5_7v10w")]
 target = NodePath("../../Player")
 
-[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("4_1w0gm")]
+[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player", "timer") instance=ExtResource("4_1w0gm")]
 player = NodePath("../../Player")
+timer = NodePath("../Timer")
 
 [node name="PlayerExperience" parent="UI" instance=ExtResource("5_ww3n7")]
+
+[node name="CoinCounter" parent="UI" instance=ExtResource("6_xtl6j")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_xk110")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dalekcm36228r"]
+[gd_scene load_steps=4 format=3 uid="uid://dalekcm36228r"]
 
 [ext_resource type="Script" path="res://Scripts/store.gd" id="1_4ax5i"]
 [ext_resource type="Theme" uid="uid://h0p28uku3deb" path="res://Themes/button.tres" id="1_q2uso"]
+[ext_resource type="LabelSettings" uid="uid://ctd2txar1au8i" path="res://Themes/tittle_ui.tres" id="2_ubrk8"]
 
 [node name="Store" type="Control"]
 layout_mode = 3
@@ -36,6 +37,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 128
 text = "Loja"
+label_settings = ExtResource("2_ubrk8")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="background/container_holder"]
@@ -58,7 +60,7 @@ text = "Upgrades"
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_q2uso")
-text = "Menu"
+text = "Voltar"
 
 [connection signal="pressed" from="background/container_holder/VBoxContainer/characters" to="." method="_on_characters_pressed"]
 [connection signal="pressed" from="background/container_holder/VBoxContainer/upgrades" to="." method="_on_upgrades_pressed"]

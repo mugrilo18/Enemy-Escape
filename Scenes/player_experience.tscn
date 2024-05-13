@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c52m0lw2uxj23"]
 
 [ext_resource type="Script" path="res://Scripts/player_experience.gd" id="1_jr1p3"]
-[ext_resource type="Texture2D" uid="uid://ba1ngj743y6hn" path="res://Assets/icone_xp.png" id="2_pa484"]
+[ext_resource type="Texture2D" uid="uid://ba1ngj743y6hn" path="res://Assets/Icons/icone_xp.png" id="2_pa484"]
 
 [node name="PlayerExperience" type="Control"]
 layout_mode = 3
